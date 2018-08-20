@@ -6,6 +6,7 @@ import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import Bundler from 'parcel-bundler';
 import routes from './routes';
 
 // Express app setup
@@ -17,6 +18,16 @@ app.set('view engine', 'pug');
 
 // serve static files from 'public'
 app.use(express.static(path.join(__dirname, './public')));
+
+// use parcel bundler
+if (process.env.NODE_ENV !== 'production') {
+  const bundler = new Bundler('./src/index.js', {
+    outDir: 'public/js',
+    watch: true,
+  });
+  bundler.bundle();
+  app.use(bundler.middleware());
+}
 
 // logger
 app.use(logger('combined'));
