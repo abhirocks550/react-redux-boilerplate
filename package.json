@@ -1,0 +1,12 @@
+{
+  "name": "redux-boilerplate",
+  "version": "1.0.0",
+  "description": "React Redux with React router boilerplate. Eslint for linting code and JEST for testing React.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhijit",
+  "license": "ISC"
+}
